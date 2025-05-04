@@ -37,7 +37,10 @@ docker logs -f llm-lambda
 docker exec -it llm-lambda /bin/sh
 ```
 
-#### Ctr + c to stop the continaer
+#### to stop the continaer
+```
+Ctr + c
+```
 
 ### AWS Commands
 
