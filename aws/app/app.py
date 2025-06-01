@@ -1,3 +1,6 @@
+# references
+# https://horosin.com/deploy-a-language-model-llm-on-aws-lambda
+
 import sys
 import base64
 import json

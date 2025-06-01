@@ -14,7 +14,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"  # Detect GPU or fallbac
 
 #set the paths
 base_path  = r'/home/nachiketa/Documents/Workspaces/checkpoints/deepseekmath/base'
-save_mpath = r'/home/nachiketa/Documents/Workspaces/checkpoints/deepseekmath/gptq'
+save_mpath = r'/home/nachiketa/Documents/Workspaces/checkpoints/deepseekmath/gptq_int8'
 
 model_name = base_path
 
@@ -27,7 +27,8 @@ calibration_dataset = load_dataset(
 
 
 # quantization configuration
-quant_config = QuantizeConfig(bits=4, group_size=128)
+#quant_config = QuantizeConfig(bits=4, group_size=128)
+quant_config = QuantizeConfig(bits=8, group_size=128)
 
 # Create the modelcloud instance
 model = GPTQModel.load(model_name, quant_config)
