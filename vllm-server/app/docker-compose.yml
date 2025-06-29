@@ -1,0 +1,12 @@
+services:
+  vllm:
+    build:
+      context: .
+    image: vllm-cuda128
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_PATH=/models
+    volumes:
+      - ./deepseek-math-7b:/models
+    profiles: ["gpu"]

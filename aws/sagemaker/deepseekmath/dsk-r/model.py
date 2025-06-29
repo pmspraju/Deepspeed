@@ -15,10 +15,19 @@ def get_model(properties):
     model = AutoModelForCausalLM.from_pretrained(
         model_name, revision="float32", torch_dtype=torch.float32
     )
+
+    hf_model = HuggingFaceModel(
+        model_data="s3://deepseek-math-7b/models/deepseekmath.tar.gz",  # path to your trained sagemaker model
+        role=role, # iam role with permissions to create an Endpoint
+        transformers_version="4.26", # transformers version used
+        pytorch_version="1.13", # pytorch version used
+        py_version="py39", # python version of the DLC
+    )
+
     tokenizer = AutoTokenizer.from_pretrained(model_name)
 
     model = deepspeed.init_inference(
-        model,
+        hf_model,
         mp_size=tensor_parallel,
         dtype=model.dtype,
         replace_method="auto",
