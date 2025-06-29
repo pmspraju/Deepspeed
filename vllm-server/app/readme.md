@@ -1,5 +1,9 @@
+## Try Vllm in Lambda AI gpu
+#### Used A100 40GB Pcle GPU instance for Deepseek-7b-math model.
+
 ### Docker commands
 
+#### Initial docker commands 
 ```
 sudo systemctl restart docker
 docker images -f dangling=true
